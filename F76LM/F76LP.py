@@ -9,20 +9,34 @@ from distutils.dir_util import copy_tree
 from colorama import init, Fore, Style
 import os
 import glob
+import msvcrt as m
 
 """
-=============
-Code begins
-=============
+================
+Prep variables
+================
 """
 init()
+version = "0.1"
 
 red = Fore.RED
 yellow = Fore.YELLOW
 cyan = Fore.CYAN
 green = Fore.GREEN
 reset = Style.RESET_ALL
+"""
+=============
+Code begins
+=============
+"""
 
+def menu():
+    print(yellow)
+    print("========================")
+    print("F76LM - Fo76 Loading screen ")
+    print("Version {}".format(version))
+    print("========================")
+    print(reset)
 
 def file_conversion():
     FromDirectory = "Prep"
@@ -67,7 +81,7 @@ def file_conversion():
         os.remove(file)
 
     print(reset, green)
-    print("Done!")
+    input("Done!\nYou can now close the program")
 
 
 file_conversion()
