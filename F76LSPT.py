@@ -72,7 +72,7 @@ def file_conversion():
     dirs = os.listdir("Temp")
     for item in dirs:
         if os.path.isfile(path + item):
-            print(f"Resizing {item}")
+            print(f"{cyan}Resizing {item}{reset}")
             im = Image.open(path + item)
             imResize = im.resize((480, 270), Image.ANTIALIAS)
             imResize.save(path+item, "PNG")
