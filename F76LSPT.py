@@ -54,6 +54,7 @@ def file_conversion():
     ToDirectory = "Temp"
     if not os.path.exists("temp"):
         print(f"{yellow}-Creating temp folder{reset}")
+        os.makedirs("Temp")
 
     print(f"Copying files.")
 
@@ -79,6 +80,7 @@ def file_conversion():
 
     if not os.path.exists("Finished"):
         print(f"{yellow}-Creating Finished folder{reset}")
+        os.makedirs("Finished")
 
     Move1 = glob.glob("Prep\\*.*")
     Move2 = glob.glob("Temp\\*.*")
