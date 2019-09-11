@@ -44,6 +44,7 @@ def menu():
         print("-Creating prep folder")
         os.makedirs("Prep")
     print("Please put the images you want as a loading screen for 76 in the \"Prep\" folder before you continue.")
+    print(f"{red}This can be slow depending on the amount of files you have loaded in.{reset}")
     input("Press ENTER to continue\n")
     file_conversion()
 
@@ -54,7 +55,7 @@ def file_conversion():
     if not os.path.exists("temp"):
         print(f"{yellow}-Creating temp folder{reset}")
 
-    print(f"Copying files.\n{red}This can be slow depending on the amount of files you have loaded in.{reset}")
+    print(f"Copying files.")
 
     copy_tree(FromDirectory, ToDirectory)
 
