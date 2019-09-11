@@ -33,7 +33,7 @@ Code begins
 def menu():
     print(yellow)
     print("========================")
-    print("F76LM - Fo76 Loading screen ")
+    print("F76LM - Fo76 Loading Screen Preparing Tool ")
     print("Version {}".format(version))
     print("========================")
     print(reset)
