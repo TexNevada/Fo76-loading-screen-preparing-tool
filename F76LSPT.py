@@ -7,7 +7,7 @@ Import list
 
 from distutils.dir_util import copy_tree
 from colorama import init, Fore, Style
-import os, sys
+import os
 import glob
 import shutil
 from PIL import Image
@@ -64,7 +64,7 @@ def file_conversion():
     files = glob.glob('temp\\*.*')
     for file in files:
         print(f"{cyan}Renaming {file}{reset}")
-        parts = file.split(".png" or ".jpg")
+        parts = file.split(".")
         new_name = "{}-thumbnail.png".format(parts[0])
         os.rename(file, new_name)
 
@@ -82,6 +82,13 @@ def file_conversion():
         print(f"{yellow}-Creating Finished folder{reset}")
         os.makedirs("Finished")
 
+    files = glob.glob('Prep\\*.*')
+    for file in files:
+        print(f"{cyan}Renaming {file}{reset}")
+        parts = file.split(".")
+        new_name = "{}.png".format(parts[0])
+        os.rename(file, new_name)
+
     Move1 = glob.glob("Prep\\*.*")
     Move2 = glob.glob("Temp\\*.*")
 
@@ -97,8 +104,8 @@ def file_conversion():
         shutil.move(file, "Finished")
     print(reset + "Moved files from Temp to Finished")
 
-
     print(green)
     input("Done!\nYou can now close the program")
+
 
 menu()
