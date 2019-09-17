@@ -18,7 +18,7 @@ Prep variables
 ================
 """
 init()
-version = "1.0"
+version = "1.1"
 
 red = Fore.RED
 yellow = Fore.YELLOW
@@ -68,15 +68,24 @@ def file_conversion():
         new_name = "{}-thumbnail.png".format(parts[0])
         os.rename(file, new_name)
 
-    print("Resizing images")
+    print("Resizing images & fixing color depth")
     path = "Temp\\"
     dirs = os.listdir("Temp")
     for item in dirs:
         if os.path.isfile(path + item):
-            print(f"{cyan}Resizing {item}{reset}")
-            im = Image.open(path + item)
+            print(f"{cyan}Fixing color depth & resizing {item}{reset}")
+            im = Image.open(path + item).convert("RGBA")
             imResize = im.resize((480, 270), Image.ANTIALIAS)
             imResize.save(path+item, "PNG")
+
+    print("Fixing color depth")
+    path = "Prep\\"
+    dirs = os.listdir("Prep")
+    for item in dirs:
+        if os.path.isfile(path + item):
+            print(f"{cyan}Fixing color depth for {item}{reset}")
+            im = Image.open(path + item).convert("RGBA")
+            im.save(path+item, "PNG")
 
     if not os.path.exists("Finished"):
         print(f"{yellow}-Creating Finished folder{reset}")
@@ -92,17 +101,17 @@ def file_conversion():
     Move1 = glob.glob("Prep\\*.*")
     Move2 = glob.glob("Temp\\*.*")
 
-    print("Moving files from Prep to Finished folder"+cyan)
+    print("Moving files from Prep to Finished folder")
     for file in Move1:
         print(f"{cyan}Moving {file} to Finished folder. {reset}")
         shutil.move(file, "Finished")
-    print(reset+"Moved files from Prep to Finished")
+    print("Moved files from Prep to Finished")
 
-    print("Moving files from Temp to Finished folder"+cyan)
+    print("Moving files from Temp to Finished folder")
     for file in Move2:
         print(f"{cyan}Moving {file} to Finished folder. {reset}")
         shutil.move(file, "Finished")
-    print(reset + "Moved files from Temp to Finished")
+    print("Moved files from Temp to Finished")
 
     print(green)
     input("Done!\nYou can now close the program")
