@@ -1,3 +1,5 @@
+# THIS SOFTWARE IS NO LONGER BEING SUPPORTED
+
 # F76LSPT
 
 You might ask yourself. What is F76LSPT / Fallout 76 loading screen preparing tool.
